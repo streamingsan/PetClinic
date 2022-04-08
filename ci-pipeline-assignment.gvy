@@ -33,7 +33,7 @@ pipeline {
                }
             }			
         }
-        stage('codecoverage') {
+        /*stage('codecoverage') {
 
            tools {
               jdk 'java1.8'
@@ -48,19 +48,19 @@ pipeline {
 	               cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'target/site/cobertura/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false                  
                }
            }		
-        }
-        stage('package/build-war') {
+        }*/
+        stage('package') {
 	         steps {
                 // step5
                 echo 'package......'
 		            sh script: '/opt/apache-maven-3.8.5/bin/mvn package'	
            }		
         }
-        stage('deploy-war') {
+        stage('deploy') {
 	         steps {
                 // step6
                 echo 'deploy......'
-		            sh script: 'scp -o StrictHostKeyChecking=no target/*.war 172.31.94.189:/opt/apache-tomcat-8.5.38/webapps/'	
+		            sh script: 'cp target/*.war /opt/apache-tomcat-8.5.38/webapps/'	
            }		
         }
     }
