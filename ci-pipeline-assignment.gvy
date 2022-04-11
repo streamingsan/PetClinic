@@ -21,7 +21,7 @@ pipeline {
                }
            }		
         }
-        stage('unit-test') {
+        /*stage('unit-test') {
 	          steps {
                 // step3
                 echo 'unittest..'
@@ -33,7 +33,7 @@ pipeline {
                }
             }			
         }
-        /*stage('codecoverage') {
+        stage('codecoverage') {
 
            tools {
               jdk 'java1.8'
@@ -60,7 +60,7 @@ pipeline {
 	         steps {
                 // step6
                 echo 'deploy......'
-		            sh script: 'cp target/*.war /opt/apache-tomcat-8.5.38/webapps/'	
+		            sh script: 'cp target/*.war /opt/apache-tomcat-8.5.78/webapps/'	
            }		
         }
     }
