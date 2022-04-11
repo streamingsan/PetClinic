@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('compile') {
+        stage('Compile') {
 	         steps {
                 // step1 
                 echo 'compiling..'
@@ -9,7 +9,7 @@ pipeline {
 		            sh script: '/opt/apache-maven-3.8.5/bin/mvn compile'
            }
         }
-        stage('codereview-pmd') {
+        stage('Code Review') {
 	         steps {
                 // step2
                 echo 'codereview..'
@@ -21,7 +21,7 @@ pipeline {
                }
            }		
         }
-        /*stage('unit-test') {
+        stage('Unit Test') {
 	          steps {
                 // step3
                 echo 'unittest..'
@@ -33,7 +33,7 @@ pipeline {
                }
             }			
         }
-        stage('codecoverage') {
+        /*stage('codecoverage') {
 
            tools {
               jdk 'java1.8'
@@ -49,14 +49,14 @@ pipeline {
                }
            }		
         }*/
-        stage('package') {
+        stage('Package') {
 	         steps {
                 // step5
                 echo 'package......'
 		            sh script: '/opt/apache-maven-3.8.5/bin/mvn package'	
            }		
         }
-        stage('deploy') {
+        stage('Deploy') {
 	         steps {
                 // step6
                 echo 'deploy......'
